@@ -1,0 +1,56 @@
+@import 'css/reset.css';
+@import 'css/color.css';
+
+body{
+    background-color: var(--primary-color); 
+    
+}
+.nav-container{
+    padding: 12px;
+}
+.nav-container > nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 100vw;
+}
+
+/* color of icon is to be added here */
+
+.nav-container > nav > .center > h1{
+    color: var(--primary-font-color);
+    font-family: 'Inter';
+    font-size: 2rem;
+}
+.nav-container > nav > .right > button{
+    padding: 8px;
+    width: 8vw;
+    border: none;
+    background-color: var(--secondary-color);
+    color: var(--primary-font-color);
+    font-family: 'Inter';
+    font-weight: bold;
+    border-radius: 10px;
+}
+header > .line{
+    height: 2px;
+    background-color: white;
+}
+
+.main-nav > nav > ul{
+    padding: 15px;
+}
+
+.main-nav > nav > ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    column-gap: 3rem;
+}
+.main-nav > nav > ul > li > a{
+    text-decoration: none;
+    color: var(--primary-font-color);
+    font-family: "Inter";
+}

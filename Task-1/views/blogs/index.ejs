@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogging Website</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/be90481885.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+</head>
+<body>
+    <!-- Start of header section -->
+    <header>
+        <section class="nav-container">
+            <nav>
+                <div class="left">
+                    <a href="https://www.facebook.com/"><i class="fab fa-facebook"></i></a>
+                    <a href="https://twitter.com/HawanaTamang"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.linkedin.com/in/hawana0911/"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/tamanghawana09"><i class="fab fa-github"></i></a>
+                </div>
+                <div class="center">
+                    <h1>Hawana's Blogging Website</h1>
+                </div>
+                <div class="right">
+                    <button onclick="">Create Blog</button>
+                </div>
+            </nav>
+        </section>
+        <section class="line"></section>
+        <section class="main-nav">
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="/views/blogs/blog">Blog</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </nav>
+            
+        </section>
+    </header>
+    <!-- End of header section -->
+
+
+    <!-- Start of main section -->
+    <main>
+        <section class="main-container">
+
+        </section>
+
+        <section class="line"></section>
+
+        <section class="blog-container">
+            <% blogs.forEach(blog =>{%>
+                <div class="card mt-4">
+                    <div class="card-body">
+                        <h2 class="card-title"><%=blog.title%></h2>
+                        <div class="card-subtitle text-muted mb-2">
+                            <%= blog.createdAt.toLocaleDateString() %>
+                        </div>
+                        <div class="card-text mb-2">
+                            <%= blog.description%>
+                        </div>
+                        <a href="/views/blogs/blog/<%= blogs.slug%>" class="btn btn-primary">Read More</a>
+                        <a href="/views/blogs/edit/<%= blogs.id%>" class="btn btn-info">Edit</a>
+                        <form action="/views/blogs/<%= blogs.id%>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            <%})%>
+        </section>
+    </main>
+    <!-- End of main section -->
+
+
+    <!-- Start of footer section -->
+    <footer>
+
+    </footer>
+    <!-- End of footer section -->
+</body>
+</html>
