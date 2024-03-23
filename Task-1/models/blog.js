@@ -11,7 +11,7 @@ const blogSchema = new mongoose.Schema({
         required: true
     },
     description:{
-        type:String,
+        type:String
     },
     markdown:{
         type:String,
@@ -34,7 +34,7 @@ const blogSchema = new mongoose.Schema({
 
 blogSchema.pre('validate',function(next){
     if(this.title){
-        this.slug = Slugify(this.title,{lower:true,strict:true})
+        this.slug = slugify(this.title,{lower:true,strict:true})
     }
     if(this.markdown){
         this.sanitaizedHTML= dompurify.sanitize(marked(this.markdown))
@@ -43,4 +43,4 @@ blogSchema.pre('validate',function(next){
     next()
 })
 
-module.exports = mongoose.model("Blog",blogSchema);  //导出模型，
+module.exports = mongoose.model('Blog',blogSchema);  //导出模型，

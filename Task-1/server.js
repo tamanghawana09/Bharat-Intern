@@ -8,8 +8,8 @@ const app = express()
 
 mongoose.connect('mongodb://localhost/blogDatabase')
 
-app.set('views', path.join(__dirname,'views'))
 
+app.set("views","./views")
 app.set('view engine','ejs')
 app.use(express.urlencoded({extended:false}))
 app.use(methodOverride('_method'))
@@ -22,6 +22,6 @@ app.get('/',async(req,res)=>{
 })
 
 
-app.use('/blog',blogRouter)
+app.use('/blogs',blogRouter)
 
-app.listen(3000)
+app.listen(8080)

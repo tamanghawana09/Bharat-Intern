@@ -6,7 +6,7 @@
     <title>Blogging Website</title>
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://kit.fontawesome.com/be90481885.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
 
 </head>
 <body>
@@ -24,7 +24,7 @@
                     <h1>Hawana's Blogging Website</h1>
                 </div>
                 <div class="right">
-                    <button onclick="">Create Blog</button>
+                    <a href="/blogs/new" class="btn btn-success">Create Blog</a>
                 </div>
             </nav>
         </section>
@@ -32,10 +32,10 @@
         <section class="main-nav">
             <nav>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="/views/blogs/blog">Blog</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact Us</a></li>
                 </ul>
             </nav>
             
@@ -46,39 +46,102 @@
 
     <!-- Start of main section -->
     <main>
-        <section class="main-container">
-
+        <section class="main-container" id="home">
+            <img src="/assets/Hawana’s Blog.gif" alt="Gif"> 
         </section>
-
+        <br><br>
         <section class="line"></section>
 
-        <section class="blog-container">
+        <section class="blog-container" id="blog">
+            <div class="text">
+                <h2>Blog's:</h2>
+            </div>
             <% blogs.forEach(blog =>{%>
-                <div class="card mt-4">
-                    <div class="card-body">
-                        <h2 class="card-title"><%=blog.title%></h2>
-                        <div class="card-subtitle text-muted mb-2">
-                            <%= blog.createdAt.toLocaleDateString() %>
+                    <div class="card">
+                     
+                            <div class="card-body">
+                                <h2 class="card-title"><%=blog.title%></h2>
+                                <div class="card-subtitle">
+                                    <%= blog.createdAt.toLocaleDateString() %>
+                                </div>
+                                <div class="card-text ">
+                                    <%= blog.description%>
+                                </div>
+                                <br>
+                                <div class="button">
+                                    <a href="blogs/<%= blog.slug%>" class="btn1">Read More</a>
+                                    <a href="blogs/edit/<%= blog.id%>" class="btn2">Edit</a>
+                                    <form action="blogs/<%= blog.id%>?_method=DELETE" method="POST" class="d-inline">
+                                        <button type="submit" class="btn-red">Delete</button>
+                                    </form>
+                                </div>
+                                
+                            </div>
                         </div>
-                        <div class="card-text mb-2">
-                            <%= blog.description%>
-                        </div>
-                        <a href="/views/blogs/blog/<%= blogs.slug%>" class="btn btn-primary">Read More</a>
-                        <a href="/views/blogs/edit/<%= blogs.id%>" class="btn btn-info">Edit</a>
-                        <form action="/views/blogs/<%= blogs.id%>?_method=DELETE" method="POST" class="d-inline">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                    </div>
                 </div>
             <%})%>
         </section>
+        <section class="line"></section>
+
+        <section class="about-container" id="about">
+            <div class="text">
+                <h2>About:</h2>
+            </div>
+            <div class="about-box">
+                <div class="left">
+                    <img src="/assets/About.png" alt="about">
+                </div>
+                <div class="about">
+                    <p>
+                        Welcome to Hawana's Blogging Website, your one-stop destination for insightful content and engaging discussions. Here, we strive to create a digital space where ideas flourish, perspectives collide, and inspiration ignites. Founded on the belief that everyone has a story to share and a voice worth hearing, our platform is dedicated to fostering a community of writers, thinkers, and enthusiasts from all walks of life. Whether you're passionate about travel, technology, literature, or lifestyle, you'll find a home here to explore, learn, and connect. Join us on this journey as we celebrate the power of words to inform, inspire, and unite us all.</p>
+                </div>
+            </div>
+        </section>
+        <section class="line"></section>
+
+        <section class="contact-container" id="contact">
+            <div class="text">
+                <h2>Contact Us:</h2>
+            </div>
+            <div class="contact-box">
+                <div class="left">
+                        <div>
+                            <span>📌</span>
+                            <h3>Office Address</h3>
+                            <span>Gathaghar</span>
+                            <span>Bhaktapur,Nepal</span>
+                        </div>
+                        <div>
+                            <span>📞</span>
+                            <h3>Call us</h3>
+                            <span>+9779808691807</span>
+                        </div>
+                        <div>
+                            <span>📨</span>
+                            <h3>Email Address</h3>
+                            <span>hawanatamang@gmail.com</span>
+                        </div>
+                </div>
+                <div class="right">
+                    <form method="post">
+                        <input  name="name" id="name" type="text" placeholder="Full Name"/>
+                        <input  name="email" id="email" type="text" placeholder="Email Address">
+                        <textarea name="message" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                        <button> <a href="https://formsubmit.co/el/xomavo" target="_blank">Send Message</a></button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="line"></section>
     </main>
     <!-- End of main section -->
 
 
     <!-- Start of footer section -->
     <footer>
-
+        <div class="footer-container">
+            <p>Copyright &copy; HawanaTamang 2024</p>
+        </div>
     </footer>
     <!-- End of footer section -->
 </body>
