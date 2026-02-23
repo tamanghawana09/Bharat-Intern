@@ -4,9 +4,15 @@ const bodyParser = require('body-parser')
 const nodeMailer = require('nodemailer')
 const path = require('path')
 const dotenv = require('dotenv')
+const rateLimit = require('express-rate-limit')
 
 const app = express()
 dotenv.config()
+
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+});
 
 const  port = process.env.PORT || 8000;
 
@@ -25,6 +31,7 @@ const registrationSchema = new mongoose.Schema({
 
 
 // model of schema
+app.use(limiter);
 const Registration = mongoose.model( "Registration",registrationSchema);
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
